@@ -1,18 +1,10 @@
 import './global.css'
 import install from '@edgio/prefetch/window/install'
 import installDevtools from '@edgio/devtools/install'
+import { themeChangeListener } from './themeChangeListener'
 import { component$, useVisibleTask$ } from '@builder.io/qwik'
 import { RouterHead } from './components/router-head/router-head'
 import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from '@builder.io/qwik-city'
-
-const themeChangeListener = () => {
-  const sessionTheme = localStorage.getItem('theme')
-  if (sessionTheme === 'light') {
-    document.documentElement.classList.remove('dark')
-  } else {
-    document.documentElement.classList.add('dark')
-  }
-}
 
 export default component$(() => {
   useVisibleTask$(
