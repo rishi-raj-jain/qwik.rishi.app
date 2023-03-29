@@ -1,4 +1,13 @@
 import { Router } from '@edgio/core'
 import { qwikRoutes } from '@edgio/qwik'
+import { isProductionBuild } from '@edgio/core/environment'
 
-export default new Router().use(qwikRoutes)
+const router = new Router()
+
+if (isProductionBuild()) {
+  router.static('dist')
+}
+
+router.use(qwikRoutes)
+
+export default router
