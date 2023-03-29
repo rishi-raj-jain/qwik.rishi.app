@@ -1,32 +1,28 @@
 import { component$ } from '@builder.io/qwik'
-import { QwikLogo } from '../icons/qwik'
-import styles from './header.module.css'
 
 export default component$(() => {
   return (
-    <header class={styles.header}>
-      <div class={styles.logo}>
-        <a href="/" title="qwik">
-          <QwikLogo />
-        </a>
+    <nav class="sticky top-0 z-10 flex w-full flex-col items-center bg-white dark:bg-black">
+      <div class="flex w-full max-w-[90vw] flex-row items-center justify-between sm:px-10 lg:max-w-[75vw]">
+        {/* <Toggle /> */}
+        <div class="relative flex max-w-[258px] flex-row items-center space-x-5 overflow-x-scroll sm:max-w-none sm:overflow-x-hidden">
+          <a class="dark:text-white" href="/">
+            Home
+          </a>
+          <a class="dark:text-white" href="/about">
+            About
+          </a>
+          <a class="dark:text-white" href="/blogs">
+            Blogs
+          </a>
+          <a class="dark:text-white" href="/cv">
+            CV
+          </a>
+          <a class="dark:text-white" href="/storyblok">
+            Storyblok
+          </a>
+        </div>
       </div>
-      <ul>
-        <li>
-          <a href="https://qwik.builder.io/docs/components/overview/" target="_blank">
-            Docs
-          </a>
-        </li>
-        <li>
-          <a href="https://qwik.builder.io/examples/introduction/hello-world/" target="_blank">
-            Examples
-          </a>
-        </li>
-        <li>
-          <a href="https://qwik.builder.io/tutorial/welcome/overview/" target="_blank">
-            Tutorials
-          </a>
-        </li>
-      </ul>
-    </header>
+    </nav>
   )
 })
