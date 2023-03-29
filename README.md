@@ -1,8 +1,6 @@
-
-
 <p align="center">
-  <a href="https://astro.rishi.app">
-    <img alt="Rishi Raj Jain" src="https://qwik.rishi.app/static/social-media-card.jpg">
+  <a href="https://qwik.rishi.app">
+    <img alt="Rishi Raj Jain" src="https://rishi.app/static/social-media-card.jpg">
     <h1 align="center">Rishi Raj Jain</h1>
   </a>
 </p>
@@ -25,7 +23,7 @@ Built with [Qwik](https://qwik.builder.io), [Edgio](https://edg.io), [Storyblok]
 
 ## Deploy Your Own
 
-You can deploy your own hosted version of Rishi Raj Jain's Astro website.
+You can deploy your own hosted version of Rishi Raj Jain's Qwik website.
 
 [![Deploy with Edgio](https://docs.edg.io/button.svg)](app.layer0.co/deploy?repo=https://github.com/rishi-raj-jain/astro.rishi.app)
 
