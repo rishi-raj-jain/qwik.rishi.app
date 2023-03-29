@@ -1,107 +1,42 @@
-import { component$ } from '@builder.io/qwik'
+import { Storyblok } from '~/storyblok'
+import { isServer } from '@builder.io/qwik/build'
 import type { DocumentHead } from '@builder.io/qwik-city'
-
-import Counter from '~/components/starter/counter/counter'
-import Hero from '~/components/starter/hero/hero'
-import Infobox from '~/components/starter/infobox/infobox'
-import Starter from '~/components/starter/next-steps/next-steps'
+import { component$, useTask$, useStore } from '@builder.io/qwik'
+import SocialLinks from '~/components/starter/shared/social-links'
 
 export default component$(() => {
+  const store = useStore({ data: null })
+  useTask$(async () => {
+    if (isServer) {
+      const { data } = await Storyblok.get('cdn/stories/taglines/home')
+      store.data = Storyblok.richTextResolver.render(data.story.content.Text)
+    }
+  })
   return (
-    <>
-      <Hero />
-
-      <div class="section bright">
-        <div class="container center">
-          <Starter />
+    <div class="md:justify-auto flex min-h-[90vh] flex-col justify-center md:flex-row md:items-center">
+      <div class="order-2 md:order-1 flex w-full flex-col items-center justify-center md:w-1/2 md:items-start">
+        <h1 class="mt-5 text-2xl font-bold sm:text-5xl md:mt-0">Rishi Raj Jain</h1>
+        <h2 class="mt-5 text-center text-lg text-gray-500 dark:text-white sm:text-xl md:text-left">Technical Customer Success Manager at Edgio</h2>
+        <div class="flex flex-row space-x-5">
+          <SocialLinks />
+        </div>
+        <div class="mt-10 h-[1px] w-full bg-gray-200 dark:bg-gray-700"></div>
+        {store.data && (
+          <h2 dangerouslySetInnerHTML={store.data} class="text-md mt-10 text-center text-gray-500 dark:text-white sm:text-lg md:text-left" />
+        )}
+      </div>
+      <div class="order-1 md:order-2 flex flex-col items-center md:items-end justify-center md:flex md:w-1/2">
+        <div class="grayscale filter">
+          <img
+            alt="Rishi Raj Jain"
+            sizes="(max-width: 768px) 110px, 330px"
+            class="rounded object-cover aspect-square transform-gpu"
+            src="https://opt.moovweb.net?img=https://rishi.app/static/favicon-image.jpg"
+            srcSet="https://opt.moovweb.net?img=https://rishi.app/static/favicon-image.jpg&width=110 110w, https://opt.moovweb.net?img=https://rishi.app/static/favicon-image.jpg&width=330 330w"
+          />
         </div>
       </div>
-
-      <div class="section">
-        <div class="container center">
-          <h3>
-            You can <b>count</b> on me
-          </h3>
-          <Counter />
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="container topics">
-          <Infobox>
-            <div q:slot="title" class="icon icon-cli">
-              CLI Commands
-            </div>
-            <>
-              <p>
-                <code>npm run dev</code>
-                <br />
-                Starts the development server and watches for changes
-              </p>
-              <p>
-                <code>npm run preview</code>
-                <br />
-                Creates production build and starts a server to preview it
-              </p>
-              <p>
-                <code>npm run build</code>
-                <br />
-                Creates production build
-              </p>
-              <p>
-                <code>npm run qwik add</code>
-                <br />
-                Runs the qwik CLI to add integrations
-              </p>
-            </>
-          </Infobox>
-
-          <div>
-            <Infobox>
-              <div q:slot="title" class="icon icon-apps">
-                Example Apps
-              </div>
-              <p>
-                Have a look at the <a href="/demo/flower">Flower App</a> or the <a href="/demo/todolist">Todo App</a>.
-              </p>
-            </Infobox>
-
-            <Infobox>
-              <div q:slot="title" class="icon icon-community">
-                Community
-              </div>
-              <ul>
-                <li>
-                  <span>Questions or just want to say hi? </span>
-                  <a href="https://qwik.builder.io/chat" target="_blank">
-                    Chat on discord!
-                  </a>
-                </li>
-                <li>
-                  <span>Follow </span>
-                  <a href="https://twitter.com/QwikDev" target="_blank">
-                    @QwikDev
-                  </a>
-                  <span> on Twitter</span>
-                </li>
-                <li>
-                  <span>Open issues and contribute on </span>
-                  <a href="https://github.com/BuilderIO/qwik" target="_blank">
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <span>Watch </span>
-                  <a href="https://qwik.builder.io/media/" target="_blank">
-                    Presentations, Podcasts, Videos, etc.
-                  </a>
-                </li>
-              </ul>
-            </Infobox>
-          </div>
-        </div>
-      </div>
-    </>
+    </div>
   )
 })
 

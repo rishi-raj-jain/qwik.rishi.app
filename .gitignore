@@ -40,7 +40,5 @@ lerna-debug.log*
 # Edgio generated build directory
 .edgio
 
-# Edgio generated build directory
-.edgio
-
 /tmp
+.env

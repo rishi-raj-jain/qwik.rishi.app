@@ -9,12 +9,12 @@ export const useServerTimeLoader = routeLoader$(() => {
 })
 
 interface LayoutProps {
-  className: string
+  class: string
 }
 
 export default component$((props: LayoutProps) => {
   return (
-    <div class={`min-h-screen bg-white font-display dark:bg-black ${props.className}`}>
+    <div class={`min-h-screen bg-white font-display dark:bg-black ${props.class}`}>
       <Header />
       <main class="flex flex-col items-center text-black dark:text-gray-200">
         <div class="flex w-full max-w-[90vw] flex-col py-10 sm:px-10 lg:max-w-[75vw]">
