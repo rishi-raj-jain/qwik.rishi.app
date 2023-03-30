@@ -23,16 +23,16 @@
     "qwik": "qwik"
   },
   "dependencies": {
-    "@edgio/express": "^6.1.3"
+    "@edgio/express": "^6.1.4-next-1680160737-80f2d1c.0"
   },
   "devDependencies": {
     "@builder.io/qwik": "0.24.0",
     "@builder.io/qwik-city": "~0.7.0",
-    "@edgio/cli": "^6.1.3",
-    "@edgio/core": "^6.1.3",
-    "@edgio/devtools": "^6.1.3",
-    "@edgio/prefetch": "^6.1.3",
-    "@edgio/qwik": "^6.1.3",
+    "@edgio/cli": "^6.1.4-next-1680160737-80f2d1c.0",
+    "@edgio/core": "^6.1.4-next-1680160737-80f2d1c.0",
+    "@edgio/devtools": "^6.1.4-next-1680160737-80f2d1c.0",
+    "@edgio/prefetch": "^6.1.4-next-1680160737-80f2d1c.0",
+    "@edgio/qwik": "^6.1.4-next-1680160737-80f2d1c.0",
     "@tailwindcss/typography": "^0.5.9",
     "@types/compression": "^1.7.2",
     "@types/eslint": "8.21.3",
