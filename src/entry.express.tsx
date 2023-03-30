@@ -23,6 +23,8 @@ const { router, notFound } = createQwikCity({ render, qwikCityPlan, manifest })
 
 const app = express()
 
+app.use(express.static('dist'))
+
 app.use(router)
 
 app.use(notFound)
