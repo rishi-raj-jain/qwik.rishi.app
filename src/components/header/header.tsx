@@ -1,4 +1,4 @@
-import Toggle from './Toggle'
+import Toggle from '../shared/toggle'
 import { component$ } from '@builder.io/qwik'
 
 export default component$(() => {

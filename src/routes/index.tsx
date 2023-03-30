@@ -1,8 +1,8 @@
 import { Storyblok } from '~/storyblok'
 import { isServer } from '@builder.io/qwik/build'
 import type { DocumentHead } from '@builder.io/qwik-city'
+import SocialLinks from '~/components/shared/social-media-links'
 import { component$, useTask$, useStore } from '@builder.io/qwik'
-import SocialLinks from '~/components/starter/shared/social-links'
 
 export default component$(() => {
   const store = useStore({ data: null })
