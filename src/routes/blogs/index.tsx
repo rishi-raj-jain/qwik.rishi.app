@@ -1,7 +1,7 @@
 import { component$ } from '@builder.io/qwik'
+import { routeLoader$ } from '@builder.io/qwik-city'
 import DateString from '~/components/shared/date-string'
 import type { DocumentHead } from '@builder.io/qwik-city'
-import { Link, routeLoader$ } from '@builder.io/qwik-city'
 import { Storyblok as StoryblokClient } from '~/storyblok'
 import type Storyblok from 'storyblok-js-client/dist/types'
 
@@ -69,15 +69,15 @@ export default component$(() => {
                 {item && item.first_published_at ? <DateString date={new Date(item.first_published_at)} /> : 'placeholder date'}
               </span>
               {item && item.content && (
-                <Link href={'/blog/' + item.slug} class={`mt-3 text-lg font-bold hover:underline sm:text-2xl`}>
+                <a href={'/blog/' + item.slug} class={`mt-3 text-lg font-bold hover:underline sm:text-2xl`}>
                   {item.content.title}
-                </Link>
+                </a>
               )}
               {item && item.content && <span class={`mt-3 text-sm text-gray-700 line-clamp-2 dark:text-gray-400`}>{item.content.intro}</span>}
               {item && item.slug && (
-                <Link href={'/blog/' + item.slug} class={`mt-5 text-sm uppercase text-blue-500 hover:underline`}>
+                <a href={'/blog/' + item.slug} class={`mt-5 text-sm uppercase text-blue-500 hover:underline`}>
                   Read More &rarr;
-                </Link>
+                </a>
               )}
             </div>
           ))}
