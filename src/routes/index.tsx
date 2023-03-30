@@ -1,17 +1,22 @@
-import { Storyblok } from '~/storyblok'
-import { isServer } from '@builder.io/qwik/build'
+import { component$ } from '@builder.io/qwik'
+import { routeLoader$ } from '@builder.io/qwik-city'
 import type { DocumentHead } from '@builder.io/qwik-city'
+import { Storyblok as StoryblokClient } from '~/storyblok'
 import SocialLinks from '~/components/shared/social-media-links'
-import { component$, useTask$, useStore } from '@builder.io/qwik'
+
+export const useGetTagline = routeLoader$(async () => {
+  try {
+    const { data } = await StoryblokClient.get('cdn/stories/taglines/home')
+    return { tagline: StoryblokClient.richTextResolver.render(data.story.content.Text) }
+  } catch (e) {
+    // @ts-ignore
+    console.log(e.message || e.toString())
+    return { tagline: null }
+  }
+})
 
 export default component$(() => {
-  const store = useStore({ data: null })
-  useTask$(async () => {
-    if (isServer) {
-      const { data } = await Storyblok.get('cdn/stories/taglines/home')
-      store.data = Storyblok.richTextResolver.render(data.story.content.Text)
-    }
-  })
+  const tagline = useGetTagline()
   return (
     <div class="md:justify-auto flex min-h-[90vh] flex-col justify-center md:flex-row md:items-center">
       <div class="order-2 md:order-1 flex w-full flex-col items-center justify-center md:w-1/2 md:items-start">
@@ -21,8 +26,11 @@ export default component$(() => {
           <SocialLinks />
         </div>
         <div class="mt-10 h-[1px] w-full bg-gray-200 dark:bg-gray-700"></div>
-        {store.data && (
-          <h2 dangerouslySetInnerHTML={store.data} class="text-md mt-10 text-center text-gray-500 dark:text-white sm:text-lg md:text-left" />
+        {tagline.value.tagline && (
+          <h2
+            dangerouslySetInnerHTML={tagline.value.tagline}
+            class="text-md mt-10 text-center text-gray-500 dark:text-white sm:text-lg md:text-left"
+          />
         )}
       </div>
       <div class="order-1 md:order-2 flex flex-col items-center md:items-end justify-center md:flex md:w-1/2">

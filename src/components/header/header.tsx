@@ -1,4 +1,5 @@
 import Toggle from '../shared/toggle'
+import { Link } from '@builder.io/qwik-city'
 import { component$ } from '@builder.io/qwik'
 
 export default component$(() => {
@@ -7,21 +8,21 @@ export default component$(() => {
       <div class="flex w-full max-w-[90vw] flex-row items-center justify-between sm:px-10 lg:max-w-[75vw]">
         <Toggle />
         <div class="relative flex max-w-[258px] flex-row items-center space-x-5 overflow-x-scroll sm:max-w-none sm:overflow-x-hidden">
-          <a class="dark:text-white" href="/">
+          <Link class="dark:text-white" href="/">
             Home
-          </a>
-          <a class="dark:text-white" href="/about">
+          </Link>
+          <Link class="dark:text-white" href="/about">
             About
-          </a>
-          <a class="dark:text-white" href="/blogs">
+          </Link>
+          <Link class="dark:text-white" href="/blogs">
             Blogs
-          </a>
-          <a class="dark:text-white" href="/cv">
+          </Link>
+          <Link class="dark:text-white" href="/cv">
             CV
-          </a>
-          <a class="dark:text-white" href="/storyblok">
+          </Link>
+          <Link class="dark:text-white" href="/storyblok">
             Storyblok
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
